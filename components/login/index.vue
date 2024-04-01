@@ -35,7 +35,7 @@
           <small>
             <a
               href="#"
-              class="text-primary-200 hover:underline"
+              class="text-primary-200"
             >Forgot your password?</a>
           </small>
         </div>
@@ -43,7 +43,7 @@
       <template #footer>
         <div class="flex justify-center">
           <Button
-            class="px-32"
+            class="px-36"
             label="Login"
           />
         </div>
