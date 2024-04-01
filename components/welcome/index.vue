@@ -12,12 +12,14 @@
         label="Get started"
         raised
       />
-      <Button
-        class="w-32"
-        label="Sign in"
-        outlined
-        raised
-      />
+      <NuxtLink to="/login">
+        <Button
+          class="w-32"
+          label="Sign in"
+          outlined
+          raised
+        />
+      </NuxtLink>
     </div>
   </div>
 </template>

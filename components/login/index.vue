@@ -1,6 +1,17 @@
 <template>
   <div class="bg-surface-900 h-screen w-screen flex flex-col justify-center items-center">
     <Card class="w-96 shadow-custom p-5">
+      <template #header>
+        <NuxtLink to="/">
+          <Button
+            class="py-2"
+            icon="pi pi-arrow-left"
+            text
+            rounded
+            aria-label="Filter"
+          />
+        </NuxtLink>
+      </template>
       <template #title>
         <div class="text-center text-3xl">
           Login
@@ -32,7 +43,7 @@
       <template #footer>
         <div class="flex justify-center">
           <Button
-            class="px-10"
+            class="px-32"
             label="Login"
           />
         </div>
