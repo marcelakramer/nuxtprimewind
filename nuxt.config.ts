@@ -9,6 +9,13 @@ export default defineNuxtConfig({
     '@/assets/css/base.css',
     'primeicons/primeicons.css',
   ],
+  dir: {
+    assets: "assets",
+    layouts: "layouts",
+    middleware: "middleware",
+    pages: "pages",
+    static: "static"
+  },
   primevue: {
     options: {
       unstyled: true
