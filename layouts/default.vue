@@ -7,6 +7,9 @@
       <NuxtLink to="/login">
         <a class="cursor-pointer">Login</a>
       </NuxtLink>
+      <NuxtLink to="/songs">
+        <a class="cursor-pointer">Songs</a>
+      </NuxtLink>
     </nav>
     <slot />
   </div>

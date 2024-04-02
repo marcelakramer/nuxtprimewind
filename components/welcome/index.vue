@@ -7,11 +7,13 @@
       This is the initial page of a website created to upgrade the Nuxt3 development skills.
     </p>
     <div class="flex justify-center items-center gap-3">
-      <Button
-        class="w-32"
-        label="Get started"
-        raised
-      />
+      <NuxtLink to="/songs">
+        <Button
+          class="w-32"
+          label="Get started"
+          raised
+        />
+      </NuxtLink>
       <NuxtLink to="/login">
         <Button
           class="w-32"
