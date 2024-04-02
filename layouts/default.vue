@@ -1,6 +1,6 @@
 <template>
   <div class="bg-surface-900">
-    <nav class="fixed top-0 left-0 right-0 pt-5 pl-32 flex gap-32 text-primary-500 font-bold">
+    <nav class="bg-surface-900 fixed top-0 left-0 right-0 p-5 pl-32 flex gap-32 text-primary-500 font-bold z-10">
       <NuxtLink to="/">
         <a class="cursor-pointer">Home</a>
       </NuxtLink>

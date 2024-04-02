@@ -1,26 +1,44 @@
 <template>
-  <div class="bg-surface-900 grid grid-cols-4 gap-4 p-36">
+  <div class="bg-surface-900 flex flex-wrap gap-4 mx-auto justify-center p-36">
     <div
       v-for="(song, index) in songs"
       :key="index"
       class="col-span-1"
     >
-      <Card class="shadow-custom">
+      <Card class="shadow-custom bg-surface-900 w-96 h-56 hover:bg-surface-700">
         <template #header>
           <div class="flex justify-end">
             <Button
+              v-if="song.favorite"
+              class="no-border"
+              icon="pi pi-heart-fill"
+              severity="help"
+              text
+              rounded
+              aria-label="Favorite"
+              @click="favorite(song.id)"
+            />
+            <Button
+              v-else
+              class="no-border animate-pulse"
               icon="pi pi-heart"
               severity="help"
               text
-              aria-label="Favorite"
+              rounded
+              aria-label="Not Favorite"
+              @click="favorite(song.id)"
             />
           </div>
         </template>
         <template #title>
-          {{ song.name }}
+          <div class="text-primary-50">
+            {{ song.name }}
+          </div>
         </template>
         <template #content>
-          <p>{{ song.artist }}</p>
+          <p class="text-primary-100">
+            {{ song.artist }}
+          </p>
         </template>
       </Card>
     </div>
@@ -28,15 +46,26 @@
 </template>
   
   <script setup>
-  
-      const songs = [
+
+    import { ref } from "vue";
+
+    const song = ref({});
+
+      function favorite(id) {
+        song.value = songs.value.find(song => (song.id === id));
+        song.value.favorite = !song.value.favorite
+        console.log(song.value)
+      }
+
+      const songs = ref([
       {
           "id": 1,
           "name": "Shake It Off",
           "duration": "3:39",
           "artist": "Taylor Swift",
           "album": "1989",
-          "year": 2014
+          "year": 2014,
+          "favorite": false
       },
       {
           "id": 2,
@@ -44,7 +73,8 @@
           "duration": "3:27",
           "artist": "Ariana Grande",
           "album": "Thank U, Next",
-          "year": 2019
+          "year": 2019,
+          "favorite": false
       },
       {
           "id": 3,
@@ -52,7 +82,8 @@
           "duration": "4:02",
           "artist": "Olivia Rodrigo",
           "album": "SOUR",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 4,
@@ -60,7 +91,8 @@
           "duration": "3:15",
           "artist": "Sabrina Carpenter",
           "album": "Skin - Single",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 5,
@@ -68,7 +100,8 @@
           "duration": "3:55",
           "artist": "Taylor Swift",
           "album": "Fearless",
-          "year": 2008
+          "year": 2008,
+          "favorite": false
       },
       {
           "id": 6,
@@ -76,7 +109,8 @@
           "duration": "2:58",
           "artist": "Ariana Grande",
           "album": "Thank U, Next",
-          "year": 2019
+          "year": 2019,
+          "favorite": false
       },
       {
           "id": 7,
@@ -84,7 +118,8 @@
           "duration": "2:58",
           "artist": "Olivia Rodrigo",
           "album": "SOUR",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 8,
@@ -92,7 +127,8 @@
           "duration": "3:08",
           "artist": "Sabrina Carpenter",
           "album": "Singular: Act II",
-          "year": 2019
+          "year": 2019,
+          "favorite": false
       },
       {
           "id": 9,
@@ -100,7 +136,8 @@
           "duration": "3:13",
           "artist": "Taylor Swift",
           "album": "Red",
-          "year": 2012
+          "year": 2012,
+          "favorite": false
       },
       {
           "id": 10,
@@ -108,7 +145,8 @@
           "duration": "3:25",
           "artist": "Ariana Grande",
           "album": "Sweetener",
-          "year": 2018
+          "year": 2018,
+          "favorite": false
       },
       {
           "id": 11,
@@ -116,7 +154,8 @@
           "duration": "3:34",
           "artist": "Olivia Rodrigo",
           "album": "SOUR",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 12,
@@ -124,7 +163,8 @@
           "duration": "3:32",
           "artist": "Sabrina Carpenter",
           "album": "Eyes Wide Open",
-          "year": 2014
+          "year": 2014,
+          "favorite": false
       },
       {
           "id": 13,
@@ -132,7 +172,8 @@
           "duration": "3:13",
           "artist": "Taylor Swift",
           "album": "Lover",
-          "year": 2019
+          "year": 2019,
+          "favorite": false
       },
       {
           "id": 14,
@@ -140,7 +181,8 @@
           "duration": "3:18",
           "artist": "Ariana Grande",
           "album": "Sweetener",
-          "year": 2018
+          "year": 2018,
+          "favorite": false
       },
       {
           "id": 15,
@@ -148,7 +190,8 @@
           "duration": "2:23",
           "artist": "Olivia Rodrigo",
           "album": "SOUR",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 16,
@@ -156,7 +199,8 @@
           "duration": "3:23",
           "artist": "Sabrina Carpenter",
           "album": "Singular: Act I",
-          "year": 2018
+          "year": 2018,
+          "favorite": false
       },
       {
           "id": 17,
@@ -164,7 +208,8 @@
           "duration": "3:40",
           "artist": "Taylor Swift",
           "album": "1989",
-          "year": 2014
+          "year": 2014,
+          "favorite": false
       },
       {
           "id": 18,
@@ -172,7 +217,8 @@
           "duration": "4:04",
           "artist": "Ariana Grande",
           "album": "Dangerous Woman",
-          "year": 2016
+          "year": 2016,
+          "favorite": false
       },
       {
           "id": 19,
@@ -180,7 +226,8 @@
           "duration": "4:04",
           "artist": "Olivia Rodrigo",
           "album": "SOUR",
-          "year": 2021
+          "year": 2021,
+          "favorite": false
       },
       {
           "id": 20,
@@ -188,10 +235,12 @@
           "duration": "2:51",
           "artist": "Sabrina Carpenter",
           "album": "Evolution",
-          "year": 2016
+          "year": 2016,
+          "favorite": false
       }
-  ]
+  ])
   
+
   </script>
 
 <style>
@@ -202,4 +251,9 @@
               0 1px 2px hsla(0, 0%, 0%, 0.1),
               0 5px 10px hsla(0, 0%, 0%, 0.25);
 }
+
+.no-border:focus {
+  box-shadow: none;
+}
+
 </style>

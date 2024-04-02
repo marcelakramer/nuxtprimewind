@@ -1,6 +1,6 @@
 <template>
   <div class="bg-surface-900 h-screen w-screen flex flex-col justify-center items-center">
-    <Card class="w-96 shadow-custom p-5">
+    <Card class="w-96 shadow-custom p-5 bg-surface-900">
       <template #header>
         <NuxtLink to="/">
           <Button
@@ -13,22 +13,29 @@
         </NuxtLink>
       </template>
       <template #title>
-        <div class="text-center text-3xl">
+        <div class="text-center text-3xl text-primary-50">
           Login
         </div>
       </template>
       <template #content>
         <div class="flex flex-col gap-2">
-          <label for="username">Username</label>
+          <label
+            for="username"
+            class="text-primary-50"
+          >Username</label>
           <InputText
             id="username"
             aria-describedby="username-help"
           />
         </div>
         <div class="flex flex-col gap-2">
-          <label for="password">Password</label>
+          <label
+            for="password"
+            class="text-primary-50"
+          >Password</label>
           <Password
-            id="password"
+            id="
+            password"
             toggle-mask
             :feedback="false"
           />
@@ -43,7 +50,7 @@
       <template #footer>
         <div class="flex justify-center">
           <Button
-            class="px-36"
+            class="px-32"
             label="Login"
           />
         </div>
