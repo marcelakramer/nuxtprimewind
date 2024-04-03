@@ -1,17 +1,6 @@
 <template>
   <div class="bg-surface-900 h-screen w-screen flex flex-col justify-center items-center">
     <Card class="w-96 shadow-custom p-5 bg-surface-900">
-      <template #header>
-        <NuxtLink to="/">
-          <Button
-            class="py-2"
-            icon="pi pi-arrow-left"
-            text
-            rounded
-            aria-label="Filter"
-          />
-        </NuxtLink>
-      </template>
       <template #title>
         <div class="text-center text-3xl text-primary-50">
           Login

@@ -1,24 +1,32 @@
 <template>
   <div class="bg-surface-900">
-    <nav class="bg-surface-900 fixed top-0 left-0 right-0 p-5 pl-32 flex gap-32 text-primary-500 font-bold z-10">
+    <nav class="bg-surface-900 fixed w-screen p-5 flex justify-around text-primary-500 font-bold z-10">
       <NuxtLink to="/">
-        <a class="cursor-pointer">Home</a>
+        <p class="cursor-pointer">
+          Home
+        </p>
       </NuxtLink>
       <NuxtLink to="/login">
-        <a class="cursor-pointer">Login</a>
+        <p class="cursor-pointer">
+          Login
+        </p>
       </NuxtLink>
       <NuxtLink to="/songs">
-        <a class="cursor-pointer">Songs</a>
+        <p class="cursor-pointer">
+          Songs
+        </p>
       </NuxtLink>
     </nav>
-    <slot />
+    <div> 
+      <slot />
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 
-  a:hover {
-    text-shadow: 1px 1px 8px rgba(35, 225, 162, 0.75);
-  }
+a:hover {
+  text-shadow: 1px 1px 8px rgba(35, 225, 162, 0.75);
+}
 
 </style>
