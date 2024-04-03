@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
       'nuxt-primevue',
-      '@nuxtjs/tailwindcss'
+      '@nuxtjs/tailwindcss',
+      '@pinia/nuxt'
   ],
   css: [
     '@/assets/css/base.css',
@@ -60,5 +61,8 @@ export default defineNuxtConfig({
           }
       }
     }
+  },
+  pinia: {
+    storesDirs: ['./stores/**']
   }
 })

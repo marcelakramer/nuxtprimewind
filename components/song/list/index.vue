@@ -29,6 +29,7 @@ import { ref } from "vue";
 
 const songs = ref([]);
 const songToFavorite = ref({});
+const { favorites } = useFavoriteStore();
 
 const addSongToList = (newSong) => {
     songs.value.unshift({
@@ -43,7 +44,8 @@ const addSongToList = (newSong) => {
 
 const favorite = (songId) => {
   songToFavorite.value = songs.value.find((s) => s.id === songId);
-  songToFavorite.value.favorite = !songToFavorite.value.favorite;
+  favorites.push(songToFavorite.value);
+  console.log(favorites)
 
 }
 
