@@ -1,20 +1,27 @@
 <template>
   <div class="bg-surface-900">
-    <nav class="bg-surface-900 fixed w-screen p-5 flex justify-around text-primary-500 font-bold z-10">
+    <nav class="bg-surface-900 fixed w-screen p-2 flex justify-around items-center text-primary-500 font-bold z-10">
       <NuxtLink to="/">
         <p class="cursor-pointer">
           Home
-        </p>
-      </NuxtLink>
-      <NuxtLink to="/login">
-        <p class="cursor-pointer">
-          Login
         </p>
       </NuxtLink>
       <NuxtLink to="/songs">
         <p class="cursor-pointer">
           Songs
         </p>
+      </NuxtLink>
+      <NuxtLink to="/favorites">
+        <p class="cursor-pointer">
+          Favorites
+        </p>
+      </NuxtLink>
+      <NuxtLink to="/login">
+        <Button
+          icon="pi pi-user"
+          text
+          rounded
+        />
       </NuxtLink>
     </nav>
     <div> 
