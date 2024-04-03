@@ -6,13 +6,7 @@ export default defineNuxtRouteMiddleware((to) => {
     }
 })
 
-const getItem = (item: string) => {
-    if (process.client) {
-        return localStorage.getItem(item)
-      } else {
-        return undefined
-      }
-}
+const { getLocalStorageItem: getItem } = getLocalStorageItem();
 
 const isLoggedIn = () => {
     return getItem("session");

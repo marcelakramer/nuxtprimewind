@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 
 const visible = ref(false);
 const songName = ref('');

@@ -57,6 +57,7 @@ import { ref } from 'vue';
 const username = ref('');
 const password = ref('');
 const session = ref({});
+const { setLocalStorageItem: setItem } = setLocalStorageItem();
 
 const login = () => {
   session.value = {
@@ -65,15 +66,6 @@ const login = () => {
   }
   setItem("session", JSON.stringify(session.value));
   navigateTo("/profile");
-}
-
-const setItem = (item: string, value: string) => {
-  if (process.client) {
-    localStorage.setItem(item, value)
-    return true
-  } else {
-    return false
-  }
 }
 
 </script>
