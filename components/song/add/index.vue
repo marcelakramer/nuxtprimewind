@@ -1,6 +1,7 @@
 <template>
   <div class="flex justify-center pt-16">
     <Button
+      label="Add song"
       icon="pi pi-plus"
       @click="visible = true"
     />
@@ -61,12 +62,6 @@
       <div class="flex justify-center gap-2">
         <Button
           type="button"
-          label="Cancel"
-          severity="secondary"
-          @click="visible = false"
-        />
-        <Button
-          type="button"
           label="Save"
           @click="addSong()"
         />
@@ -76,21 +71,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 
 const visible = ref(false);
 const songName = ref('');
 const artistName = ref('');
 const albumName = ref('');
 const year = ref('');
-const emit = defineEmits(["songAdded"]);
+const songStore = useSongStore()
 
 
-// eslint-disable-next-line vue/require-prop-types
-defineProps(["songs"]);
+
 
 const addSong = () => {
-    emit("songAdded", {
+    songStore.addSong({
         name: songName.value,
         artist: artistName.value,
         album: albumName.value,
@@ -99,6 +92,8 @@ const addSong = () => {
     visible.value = false;
     songName.value = '';
     artistName.value = '';
+    albumName.value = '';
+    year.value = '';
 }
 
 </script>

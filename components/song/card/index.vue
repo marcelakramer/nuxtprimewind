@@ -4,14 +4,14 @@
       <template #header>
         <div class="flex justify-end">
           <Button
-            v-if="song.favorite"
+            v-if="isFavorite(song)"
             class="no-border"
             icon="pi pi-heart-fill"
             severity="help"
             text
             rounded
             aria-label="Favorite"
-            @click="favorite(song.id)"
+            @click="favorite(song)"
           />
           <Button
             v-else
@@ -21,7 +21,7 @@
             text
             rounded
             aria-label="Not Favorite"
-            @click="favorite(song.id)"
+            @click="favorite(song)"
           />
           <Button
             class="no-border"
@@ -30,7 +30,7 @@
             text
             rounded
             aria-label="Delete"
-            @click="deleteSong(song.id)"
+            @click="deleteSong(song)"
           />
         </div>
       </template>
@@ -48,19 +48,29 @@
   </div>
 </template>
   
-<script setup>
-
-const emit = defineEmits(["favorite", "deleteSong"])
+<script setup lang="ts">
 
 // eslint-disable-next-line vue/require-prop-types
 defineProps(["song"]);
+
+const favoriteStore = useFavoriteStore();
+const songStore = useSongStore();
   
-const favorite = (songId) => {
-    emit("favorite", songId);
+const favorite = (song: Song) => {
+  if (isFavorite(song)) {
+    favoriteStore.removeFavorite(song);
+  } else {
+    favoriteStore.addFavorite(song);
+  }
+  
 };
 
-const deleteSong = (songId) => {
-    emit("deleteSong", songId);
+const isFavorite = (song: Song) => {
+  return favoriteStore.isFavorite(song);
+}
+
+const deleteSong = (song: Song) => {
+    songStore.deleteSong(song);
 }
 
 </script>
