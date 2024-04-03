@@ -14,6 +14,7 @@ export default {
             // Color
             'dark:border',
             'dark:border-surface-700',
+            'bg-surface-900',
 
             // Transitions
             'transform',
@@ -44,10 +45,6 @@ export default {
             'border-t-0',
             'rounded-tl-lg',
             'rounded-tr-lg',
-
-            // Colors
-            'bg-surface-0 dark:bg-surface-800',
-            'text-surface-700 dark:text-surface-0/80'
         ]
     },
     title: {
@@ -156,10 +153,6 @@ export default {
                 'rounded-br-lg': !instance.$slots.footer
             },
 
-            // Colors
-            'bg-surface-0 dark:bg-surface-800',
-            'text-surface-700 dark:text-surface-0/80',
-
             // Misc
             'overflow-y-auto'
         ]
@@ -180,9 +173,6 @@ export default {
             'border-t-0',
             'rounded-b-lg',
 
-            // Colors
-            'bg-surface-0 dark:bg-surface-800',
-            'text-surface-700 dark:text-surface-0/80'
         ]
     },
     mask: ({ props }) => ({

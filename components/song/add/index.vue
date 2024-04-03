@@ -6,12 +6,13 @@
     />
     <Dialog
       v-model:visible="visible"
+      class="text-primary-50"
       modal
       header="Add Song"
       :style="{width: '25rem'}"
     >
-      <span class="p-text-secondary block mb-5">Add a new song to the list.</span>
-      <div class="flex flex-col justify-center items-center">
+      <span class="text-primary-200 block mb-5">Add a new song to the list.</span>
+      <div class="flex flex-col justify-center items-center text-primary-50">
         <div class="flex w-72 justify-between items-center mb-5">
           <label
             for="name"

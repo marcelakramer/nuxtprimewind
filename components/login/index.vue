@@ -14,6 +14,7 @@
           >Username</label>
           <InputText
             id="username"
+            v-model="username"
             aria-describedby="username-help"
           />
         </div>
@@ -23,8 +24,8 @@
             class="text-primary-50"
           >Password</label>
           <Password
-            id="
-            password"
+            id="password"
+            v-model="password"
             toggle-mask
             :feedback="false"
           />
@@ -41,12 +42,41 @@
           <Button
             class="px-32"
             label="Login"
+            @click="login()"
           />
         </div>
       </template>
     </Card>
   </div>
 </template>
+
+<script setup lang="ts">
+
+import { ref } from 'vue';
+
+const username = ref('');
+const password = ref('');
+const session = ref({});
+
+const login = () => {
+  session.value = {
+    username: username.value,
+    password: password.value
+  }
+  setItem("session", JSON.stringify(session.value));
+  navigateTo("/profile");
+}
+
+const setItem = (item: string, value: string) => {
+  if (process.client) {
+    localStorage.setItem(item, value)
+    return true
+  } else {
+    return false
+  }
+}
+
+</script>
 
 <style>
 .shadow-custom {
