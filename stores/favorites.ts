@@ -11,10 +11,13 @@ export const useFavoriteStore = defineStore("favorites", {
             this.favorites.push(song);
         },
         removeFavorite(song: Song) {
-            this.favorites = this.favorites.filter((s) => s !== song);
+            this.favorites = this.favorites.filter((s) => s.id !== song.id);
         },
         isFavorite(song: Song) {
-            return this.favorites.includes(song);
+            return this.favorites.find((s) => s.id === song.id) !== undefined;
         }
+    },
+    persist: {
+        storage: persistedState.localStorage
     }
-})
+});

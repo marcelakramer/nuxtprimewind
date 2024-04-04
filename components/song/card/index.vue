@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card class="shadow-custom bg-surface-900 w-96 h-56 hover:bg-surface-700">
+    <Card class="shadow-custom bg-surface-800 w-96 h-56 hover:bg-surface-600">
       <template #header>
         <div class="flex justify-end">
           <Button
@@ -81,6 +81,7 @@ const isFavorite = (song: Song) => {
 }
 
 const deleteSong = (song: Song) => {
+    favoriteStore.removeFavorite(song);
     songStore.deleteSong(song);
 }
 

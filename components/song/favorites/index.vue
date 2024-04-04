@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-20 h-screen">
+  <div class="pt-16 h-screen">
     <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
       Favorite Songs
     </h1>
