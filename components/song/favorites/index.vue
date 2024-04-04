@@ -49,7 +49,7 @@
     </DataTable>
     <div
       v-else
-      class="flex justify-center pt-20"
+      class="flex justify-center pt-16"
     >
       <NuxtLink to="/songs">
         <Button 
