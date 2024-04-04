@@ -72,6 +72,7 @@
       </div>
       <div class="flex justify-center gap-2">
         <Button
+          class="w-20"
           type="button"
           label="Save"
           @click="addSong()"
