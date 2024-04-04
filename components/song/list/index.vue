@@ -6,8 +6,8 @@
     <SongAdd />
     <div class="bg-surface-900 flex flex-wrap gap-4 mx-auto justify-center px-36 py-20">
       <div
-        v-for="(song, index) in songStore.songs"
-        :key="index"
+        v-for="song in songStore.songs"
+        :key="song.id"
         class="col-span-1"
       >
         <SongCard

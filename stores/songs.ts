@@ -73,6 +73,7 @@ export const useSongStore = defineStore("songs", {
     },
     actions: {
         addSong(song: Song) {
+            console.log(song)
             this.songs.unshift(song);
         },
         deleteSong(song: Song) {

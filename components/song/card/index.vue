@@ -43,6 +43,17 @@
         <p class="text-primary-100">
           {{ song.artist }}
         </p>
+        <p class="text-primary-300 text-xs">
+          {{ song.album }} ({{ song.year }})
+        </p>
+        <div class="flex justify-end">
+          <p
+            v-duration-formatted
+            class="text-primary-200 text-xs"
+          >
+            {{ song.duration }}
+          </p>
+        </div>
       </template>
     </Card>
   </div>
