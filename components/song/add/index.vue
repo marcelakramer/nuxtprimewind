@@ -16,12 +16,12 @@
       <div class="flex flex-col justify-center items-center text-primary-50">
         <div class="flex w-72 justify-between items-center mb-5">
           <label
-            for="name"
+            for="title"
             class="font-semibold w-6rem"
-          >Name</label>
+          >Title</label>
           <InputText
-            id="name"
-            v-model="songName"
+            id="title"
+            v-model="title"
             autocomplete="off"
           />
         </div>
@@ -32,7 +32,7 @@
           >Artist</label>
           <InputText
             id="artist"
-            v-model="artistName"
+            v-model="artist"
             autocomplete="off"
           />
         </div>
@@ -43,7 +43,18 @@
           >Album</label>
           <InputText
             id="album"
-            v-model="albumName"
+            v-model="album"
+            autocomplete="off"
+          />
+        </div>
+        <div class="flex w-72 justify-between items-center mb-5">
+          <label
+            for="duration"
+            class="font-semibold w-6rem"
+          >Duration</label>
+          <InputText
+            id="duration"
+            v-model="duration"
             autocomplete="off"
           />
         </div>
@@ -73,9 +84,10 @@
 <script setup lang="ts">
 
 const visible = ref(false);
-const songName = ref('');
-const artistName = ref('');
-const albumName = ref('');
+const title = ref('');
+const artist = ref('');
+const album = ref('');
+const duration = ref('');
 const year = ref('');
 const songStore = useSongStore()
 
@@ -84,15 +96,17 @@ const songStore = useSongStore()
 
 const addSong = () => {
     songStore.addSong({
-        name: songName.value,
-        artist: artistName.value,
-        album: albumName.value,
+        title: title.value,
+        artist: artist.value,
+        album: album.value,
+        duration: duration.value,
         year: year.value
     });
     visible.value = false;
-    songName.value = '';
-    artistName.value = '';
-    albumName.value = '';
+    title.value = '';
+    artist.value = '';
+    album.value = '';
+    duration.value = '';
     year.value = '';
 }
 

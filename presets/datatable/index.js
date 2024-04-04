@@ -36,7 +36,7 @@ export default {
     wrapper: ({ props }) => ({
         class: [
             { relative: props.scrollable, 'flex flex-col grow': props.scrollable && props.scrollHeight === 'flex' },
-
+            'rounded-lg',
             // Size
             { 'h-full': props.scrollable && props.scrollHeight === 'flex' }
         ]

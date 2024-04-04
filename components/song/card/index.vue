@@ -36,7 +36,7 @@
       </template>
       <template #title>
         <div class="text-primary-50">
-          {{ song.name }}
+          {{ song.title }}
         </div>
       </template>
       <template #content>
