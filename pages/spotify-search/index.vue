@@ -29,6 +29,7 @@
       <p class="text-primary-50 font-bold text-3xl">
         Release Date: {{ song.date }}
       </p>
+      <img class="w-32 h-32" :src="song.image">
     </div>
   </div>
 </template>
@@ -48,7 +49,8 @@ const getUserSong = async () => {
     album: songResponse.value.album.name,
     date: songResponse.value.album.release_date,
     artist: songResponse.value.artists[0].name,
-    title: songResponse.value.name
+    title: songResponse.value.name,
+    image: songResponse.value.album.images[0].url
   }
 }
 
