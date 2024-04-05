@@ -16,6 +16,11 @@
           Favorites
         </p>
       </NuxtLink>
+      <NuxtLink to="/spotify-auth">
+        <p class="cursor-pointer">
+          Spotify
+        </p>
+      </NuxtLink>
       <NuxtLink to="/login">
         <Button
           icon="pi pi-user"

@@ -97,6 +97,7 @@ const songStore = useSongStore()
 
 const addSong = () => {
     songStore.addSong({
+        id: '',
         title: title.value,
         artist: artist.value,
         album: album.value,
