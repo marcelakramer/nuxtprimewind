@@ -29,22 +29,44 @@
       <p class="text-primary-50 font-bold text-3xl">
         Release Date: {{ song.date }}
       </p>
-      <img class="w-32 h-32" :src="song.image">
+      <img
+        class="w-32 h-32"
+        :src="song.image"
+      >
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 
-import { getSong } from '../../composables/getSong';
+definePageMeta({
+  middleware: 'spotify-api-auth'
+})
 
-const song = ref({});
+const spotifyAPIStore = useSpotifyAPIStore();
+const refreshTokenResponse = ref();
 const songId = ref('');
-const songResponse = ref({});
-const spotifyAPIInfoStore = useSpotifyAPIInfoStore();
+const songResponse = ref();
+const song = ref({
+  album: '',
+  date: '',
+  artist: '',
+  title: '',
+  image: ''
+});
+
+onMounted(async () => {
+  if (new Date(spotifyAPIStore.expiresAt) < new Date()){
+      refreshTokenResponse.value  = await getAccessTokenByRefreshToken(spotifyAPIStore.refreshToken)
+      if (refreshTokenResponse.value !== undefined) {
+        spotifyAPIStore.setAccessToken(refreshTokenResponse.value.access_token);
+        spotifyAPIStore.setExpiresAt(getExpiresAt(refreshTokenResponse.value.expires_in));
+      }
+  }
+})
 
 const getUserSong = async () => {
-  songResponse.value = await getSong(spotifyAPIInfoStore.accessToken, songId.value);
+  songResponse.value = await getSong(spotifyAPIStore.accessToken, songId.value);
   song.value = {
     album: songResponse.value.album.name,
     date: songResponse.value.album.release_date,

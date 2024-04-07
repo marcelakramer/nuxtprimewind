@@ -1,10 +1,10 @@
-export const useSpotifyAPIInfoStore = defineStore("spotifyAPIInfo", {
+export const useSpotifyAPIStore = defineStore("spotifyAPI", {
     state: () => {
         return {
             auth: false,
             accessToken: '',
             refreshToken: '',
-            expiresAt: new Date()
+            expiresAt: ''
         }
     },
     actions: {
@@ -17,7 +17,7 @@ export const useSpotifyAPIInfoStore = defineStore("spotifyAPIInfo", {
         setRefreshToken(newRefreshToken: string) {
             this.refreshToken = newRefreshToken;
         },
-        setExpiresAt(newExpiresAt: Date) {
+        setExpiresAt(newExpiresAt: string) {
             this.expiresAt = newExpiresAt;
         }
     },

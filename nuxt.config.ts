@@ -23,7 +23,12 @@ export default defineNuxtConfig({
     layouts: "layouts",
     middleware: "middleware",
     pages: "pages",
-    static: "static"
+    static: "static",
+  },
+  imports: {
+    dirs: [
+      "composables/**"
+    ]
   },
   primevue: {
     options: {

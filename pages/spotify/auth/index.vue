@@ -11,7 +11,9 @@
 
 <script setup lang="ts">
 
-import { authorize } from '../../composables/authorize';
+definePageMeta({
+  middleware: 'spotify-api-auth'
+})
 
 const authorizeUser = async () => {
   await authorize();

@@ -90,10 +90,7 @@ const artist = ref('');
 const album = ref('');
 const duration = ref('');
 const year = ref('');
-const songStore = useSongStore()
-
-
-
+const songStore = useSongStore();
 
 const addSong = () => {
     songStore.addSong({
