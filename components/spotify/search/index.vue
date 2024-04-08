@@ -31,14 +31,11 @@
               artist: track.artists[0].name,
               album: track.album.name,
               duration: formatSecondsToTime(track.duration_ms),
-              year: track.album.release_date.slice(0, 4)
+              year: track.album.release_date.slice(0, 4),
+              image: track.album.images[0].url
             }"
             :is-new="true"
           />
-          <!-- <img
-              class="w-32 h-32"
-              :src="track.album.images[0].url"
-            > -->
         </div>
       </div>
     </div>

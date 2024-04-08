@@ -1,7 +1,7 @@
 <template>
   <div>
     <Toast /> 
-    <Card class="shadow-custom bg-surface-800 w-96 h-56 hover:bg-surface-600">
+    <Card class="shadow-custom bg-surface-800 w-96 h-64 hover:bg-surface-600">
       <template #header>
         <div class="flex justify-end">
           <Button
@@ -47,8 +47,22 @@
         </div>
       </template>
       <template #title>
-        <div class="text-primary-50">
-          {{ song.title }}
+        <div class="flex gap-5 items-center">
+          <img
+            v-if="!song.image"
+            class="w-16"
+            src="../../../assets/images/song.svg"
+            alt="song-image"
+          >
+          <img
+            v-else
+            class="w-16"
+            :src="song.image"
+            alt="song-image"
+          >
+          <div class="text-primary-50">
+            {{ song.title.slice(0, 52) }}
+          </div>
         </div>
       </template>
       <template #content>
@@ -74,7 +88,6 @@
 <script setup lang="ts">
 
 import type { Song } from '~/interfaces/song';
-
 
 // eslint-disable-next-line vue/require-prop-types
 defineProps(["song", "isNew"]);

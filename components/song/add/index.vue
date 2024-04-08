@@ -55,7 +55,8 @@ const formData = ref({
   artist: '',
   album: '',
   duration: '',
-  year: ''
+  year: '',
+  image: ''
 });
 
 const fields = {
@@ -70,7 +71,7 @@ const showDialog = () => {
   dialogVisible.value = true;
 };
 
-const show = (severity, summary, detail) => {
+const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
   toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
 };
 
@@ -97,7 +98,7 @@ const validateForm = () => {
   if (!durationPattern.test(duration)) {
     return false;
   }
-  if (isNaN(year)) {
+  if (isNaN(+year)) {
     return false;
   }
   return true;
@@ -110,7 +111,8 @@ const resetForm = () => {
     artist: '',
     album: '',
     duration: '',
-    year: ''
+    year: '',
+    image: ''
   };
 };
 
