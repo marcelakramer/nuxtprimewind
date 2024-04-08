@@ -7,9 +7,13 @@ export const useSongStore = defineStore("songs", {
         }
     },
     actions: {
-        addSong(song: Song) {
-            song.id = this.getNewId();
-            this.songs.unshift(song);
+        addSong(song: Song): boolean {
+            if (this.songs.find((s) => s.title === song.title && s.album === song.album && s.artist === song.artist) === undefined) {
+                song.id = this.getNewId();
+                this.songs.unshift(song);
+                return true
+            }
+            return false
         },
         deleteSong(song: Song) {
             this.songs = this.songs.filter((s) => s.id !== song.id);

@@ -16,7 +16,7 @@
           Favorites
         </p>
       </NuxtLink>
-      <NuxtLink to="/spotify/auth">
+      <NuxtLink to="/spotify/search">
         <p class="cursor-pointer">
           Spotify
         </p>

@@ -4,34 +4,45 @@
       <template #header>
         <div class="flex justify-end">
           <Button
-            v-if="isFavorite(song)"
+            v-if="isNew"
             class="no-border"
-            icon="pi pi-heart-fill"
-            severity="help"
+            icon="pi pi-plus"
             text
             rounded
-            aria-label="Favorite"
-            @click="favorite(song)"
+            aria-label="Add Song"
+            @click="addSong(song)"
           />
-          <Button
-            v-else
-            class="no-border animate-pulse"
-            icon="pi pi-heart"
-            severity="help"
-            text
-            rounded
-            aria-label="Not Favorite"
-            @click="favorite(song)"
-          />
-          <Button
-            class="no-border"
-            icon="pi pi-trash"
-            severity="danger"
-            text
-            rounded
-            aria-label="Delete"
-            @click="deleteSong(song)"
-          />
+          <div v-if="!isNew">
+            <Button
+              v-if="isFavorite(song)"
+              class="no-border"
+              icon="pi pi-heart-fill"
+              severity="help"
+              text
+              rounded
+              aria-label="Favorite"
+              @click="favorite(song)"
+            />
+            <Button
+              v-else
+              class="no-border animate-pulse"
+              icon="pi pi-heart"
+              severity="help"
+              text
+              rounded
+              aria-label="Not Favorite"
+              @click="favorite(song)"
+            />
+            <Button
+              class="no-border"
+              icon="pi pi-trash"
+              severity="danger"
+              text
+              rounded
+              aria-label="Delete"
+              @click="deleteSong(song)"
+            />
+          </div>
         </div>
       </template>
       <template #title>
@@ -60,9 +71,11 @@
 </template>
   
 <script setup lang="ts">
+import type { Song } from '~/interfaces/song';
+
 
 // eslint-disable-next-line vue/require-prop-types
-defineProps(["song"]);
+defineProps(["song", "isNew"]);
 
 const favoriteStore = useFavoriteStore();
 const songStore = useSongStore();
@@ -83,6 +96,10 @@ const isFavorite = (song: Song) => {
 const deleteSong = (song: Song) => {
     favoriteStore.removeFavorite(song);
     songStore.deleteSong(song);
+}
+
+const addSong = (song: Song) => {
+  songStore.addSong(song);
 }
 
 </script>

@@ -11,10 +11,6 @@
 
 <script setup lang="ts">
 
-definePageMeta({
-  middleware: 'spotify-api-auth'
-})
-
 const authorizeUser = async () => {
   await authorize();
 }

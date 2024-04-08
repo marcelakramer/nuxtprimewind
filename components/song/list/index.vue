@@ -12,6 +12,7 @@
       >
         <SongCard
           :song="song"
+          :is-new="false"
         />
       </div>
     </div>
