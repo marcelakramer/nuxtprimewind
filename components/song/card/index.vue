@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Toast /> 
     <Card class="shadow-custom bg-surface-800 w-96 h-56 hover:bg-surface-600">
       <template #header>
         <div class="flex justify-end">
@@ -71,6 +72,7 @@
 </template>
   
 <script setup lang="ts">
+
 import type { Song } from '~/interfaces/song';
 
 
@@ -79,12 +81,19 @@ defineProps(["song", "isNew"]);
 
 const favoriteStore = useFavoriteStore();
 const songStore = useSongStore();
-  
+const toast = useToast();
+
+const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
+    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
+};
+
 const favorite = (song: Song) => {
   if (isFavorite(song)) {
     favoriteStore.removeFavorite(song);
+    show(undefined, "Deslike Song", "Song removed from favorites.");
   } else {
     favoriteStore.addFavorite(song);
+    show(undefined, "Like Song", "Song added to favorites.");
   }
   
 };
@@ -96,10 +105,15 @@ const isFavorite = (song: Song) => {
 const deleteSong = (song: Song) => {
     favoriteStore.removeFavorite(song);
     songStore.deleteSong(song);
+    show("error", "Delete song", "Song was deleted from the list.")
 }
 
 const addSong = (song: Song) => {
-  songStore.addSong(song);
+  if (songStore.addSong(song)) {
+    show("success", "Add song", "Song was added to the list.")  
+  } else {
+    show("error", "Existing song", "Song is already on the list.")
+  }
 }
 
 </script>

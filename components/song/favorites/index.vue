@@ -1,5 +1,6 @@
 <template>
   <div class="pt-16 h-screen">
+    <Toast />
     <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
       Favorite Songs
     </h1>
@@ -42,7 +43,7 @@
             icon="pi pi-times"
             severity="danger"
             text
-            @click="favoriteStore.removeFavorite(slotProps.data)"
+            @click="removeFavorite(slotProps.data)"
           />
         </template>
       </Column>
@@ -62,7 +63,18 @@
 </template>
 
 <script setup lang="ts">
+import type { Song } from '~/interfaces/song';
 
 const favoriteStore = useFavoriteStore();
+const toast = useToast();
+
+const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
+    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
+};
+
+const removeFavorite = (song: Song) => {
+  favoriteStore.removeFavorite(song);
+  show(undefined, "Deslike Song", "Song removed from favorites.");
+}
 
 </script>
