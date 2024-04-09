@@ -30,14 +30,13 @@ export default {
                 'border-red-500 dark:border-red-400': props.message.severity == 'error',
                 'border-purple-500 dark:border-purple-400': props.message.severity == undefined
             },
-            // {
-            //      'text-blue-700 dark:text-blue-300': props.message.severity == 'info',
-            //      'text-green-700 dark:text-green-300': props.message.severity == 'success',
-            //      'text-orange-700 dark:text-orange-300': props.message.severity == 'warn',
-            //      'text-red-700 dark:text-red-300': props.message.severity == 'error',
-            //      'text-purple-700 dark:text-purple-300': props.message.severity == undefined,
-            // }
-            'text-primary-50'
+            {
+                 'text-blue-700 dark:text-blue-300': props.message.severity == 'info',
+                 'text-green-700 dark:text-green-300': props.message.severity == 'success',
+                 'text-orange-700 dark:text-orange-300': props.message.severity == 'warn',
+                 'text-red-700 dark:text-red-300': props.message.severity == 'error',
+                 'text-purple-700 dark:text-purple-300': props.message.severity == undefined,
+            },
         ]
     }),
     content: ({ props }) => ({

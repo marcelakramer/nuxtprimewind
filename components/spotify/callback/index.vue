@@ -8,10 +8,6 @@
   
   <script setup lang="ts">
   
-  definePageMeta({
-    middleware: 'spotify-api-auth'
-  })
-  
   const code = ref();
   const route = useRoute();
   const spotifyAPIStore = useSpotifyAPIStore();

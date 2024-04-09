@@ -45,10 +45,6 @@
   <script setup lang="ts">
   import type { SpotifyAPITrack } from '~/interfaces/spotifyAPITrack';
   
-  definePageMeta({
-    middleware: 'spotify-api-auth'
-  })
-  
   const spotifyAPIStore = useSpotifyAPIStore();
   const refreshTokenResponse = ref();
   const tracks = ref<SpotifyAPITrack[]>([]);

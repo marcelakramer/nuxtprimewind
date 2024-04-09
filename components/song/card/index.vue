@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Toast /> 
     <Card class="shadow-custom bg-surface-800 w-96 h-64 hover:bg-surface-600">
       <template #header>
         <div class="flex justify-end">

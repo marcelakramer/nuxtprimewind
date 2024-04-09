@@ -1,5 +1,6 @@
 <template>
   <div class="bg-surface-900">
+    <Toast /> 
     <nav class="bg-surface-900 fixed w-screen p-2 flex justify-around items-center text-primary-500 font-bold z-10">
       <NuxtLink to="/">
         <p class="cursor-pointer">

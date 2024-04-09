@@ -1,6 +1,5 @@
 <template>
   <div class="flex justify-center pt-16">
-    <Toast />
     <Button
       label="Add song"
       icon="pi pi-plus"

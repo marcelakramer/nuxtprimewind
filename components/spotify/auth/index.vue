@@ -9,10 +9,10 @@
   </div>
 </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   
   const authorizeUser = async () => {
     await authorize();
   }
   
-  </script>
+</script>

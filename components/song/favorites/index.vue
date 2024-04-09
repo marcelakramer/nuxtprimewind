@@ -1,6 +1,5 @@
 <template>
   <div class="pt-16 h-screen">
-    <Toast />
     <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
       Favorite Songs
     </h1>

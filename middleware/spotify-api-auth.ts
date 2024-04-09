@@ -6,4 +6,10 @@ export default defineNuxtRouteMiddleware((to) => {
             return navigateTo('/spotify/auth')
         }
     }
+
+    if (to.path === '/spotify/auth' || to.path === '/spotify/callback') {
+        if (spotifyAPIstore.auth) {
+            return navigateTo('/spotify/search')
+        }
+    }
 })
