@@ -14,7 +14,7 @@
   const accessTokenResponse = ref();
   
   onMounted(async () => {
-    code.value = code.value = route.query.code;
+    code.value = route.query.code;
     if (code.value !== undefined) {
       spotifyAPIStore.changeAuth(true);
       accessTokenResponse.value = await getAccessToken(code.value);
