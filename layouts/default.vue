@@ -1,38 +1,58 @@
 <template>
   <div class="bg-surface-900">
     <Toast /> 
-    <nav class="bg-surface-900 fixed w-screen p-2 flex justify-around items-center text-primary-500 font-bold z-10">
-      <NuxtLink to="/">
-        <p class="cursor-pointer">
-          Home
-        </p>
-      </NuxtLink>
-      <NuxtLink to="/songs">
-        <p class="cursor-pointer">
-          Songs
-        </p>
-      </NuxtLink>
-      <NuxtLink to="/favorites">
-        <p class="cursor-pointer">
-          Favorites
-        </p>
-      </NuxtLink>
-      <NuxtLink to="/spotify/search">
-        <p class="cursor-pointer">
-          Spotify
-        </p>
-      </NuxtLink>
-      <NuxtLink to="/login">
-        <Button
-          icon="pi pi-user"
-          text
-          rounded
-        />
-      </NuxtLink>
-    </nav>
-    <div> 
-      <slot />
-    </div>
+    <Toolbar class="bg-surface-900 border-0 m-0 fixed w-screen">
+      <template #start>
+        <div>
+          <img
+            class="w-8 ml-4"
+            src="../assets/images/song.svg"
+            alt="song-image"
+          >
+        </div>
+      </template>
+      <template #center>
+        <div class="flex items-center gap-32">
+          <NuxtLink to="/">
+            <Button
+              label="Home"
+              text
+            />
+          </NuxtLink>
+          <NuxtLink to="/songs">
+            <Button
+              label="Songs"
+              text
+            />
+          </NuxtLink>
+          <NuxtLink to="/favorites">
+            <Button
+              label="Favorites"
+              text
+            />
+          </NuxtLink>
+          <NuxtLink to="/spotify/search">
+            <Button
+              label="Spotify API"
+              text
+            />
+          </NuxtLink>
+        </div>
+      </template>
+
+      <template #end>
+        <div class="flex align-items-center gap-2">
+          <NuxtLink to="/login">
+            <Button
+              icon="pi pi-user"
+              text
+              rounded
+            />
+          </NuxtLink>
+        </div>
+      </template>
+    </Toolbar>
+    <slot />
   </div>
 </template>
 
