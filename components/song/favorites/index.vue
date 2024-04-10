@@ -1,12 +1,12 @@
 <template>
-  <div class="pt-16 h-screen">
+  <div class="pt-16">
     <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
       Favorite Songs
     </h1>
     <DataTable
       v-if="favoriteStore.favorites.length > 0"
       :value="favoriteStore.favorites"
-      class="mx-80 my-20"
+      class="mx-80 py-20"
     >
       <Column
         field="title"

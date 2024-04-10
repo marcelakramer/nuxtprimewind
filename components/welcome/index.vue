@@ -1,6 +1,11 @@
 <template>
-  <div class="bg-surface-900 h-screen w-screen flex flex-col justify-center items-center">
-    <h1 class="text-primary-50 font-bold text-6xl">
+  <div class="bg-surface-900 h-screen w-screen flex flex-col items-center">
+    <img
+      class="w-40 mt-48"
+      src="../../assets/images/song.svg"
+      alt="song-image"
+    >
+    <h1 class="text-primary-50 font-bold text-6xl mt-10">
       Welcome to the SongHub!
     </h1>
     <p class="text-primary-300 text-center m-10 text-2xl max-w-xl">

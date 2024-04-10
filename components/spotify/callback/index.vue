@@ -1,8 +1,12 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen flex flex-col items-center gap-8">
     <h1 class="pt-56 text-center text-4xl font-bold text-primary-50">
       Wait while we redirect you to the Spotify search...
     </h1>
+    <ProgressSpinner
+      stroke-width="6" 
+      class="mt-5 w-24 text-primary-400"
+    />
   </div>
 </template>
   
@@ -24,7 +28,7 @@
         spotifyAPIStore.setExpiresAt(getExpiresAt(accessTokenResponse.value.expires_in));
       }
     }
-    navigateTo('/spotify/search');
+    //navigateTo('/spotify/search');
   });
   
   </script>

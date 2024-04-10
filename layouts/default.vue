@@ -1,7 +1,7 @@
 <template>
   <div class="bg-surface-900">
     <Toast /> 
-    <Toolbar class="bg-surface-900 border-0 m-0 fixed w-screen">
+    <Toolbar class="bg-surface-900 border-0 m-0 fixed w-screen z-10">
       <template #start>
         <div>
           <img

@@ -17,6 +17,11 @@
           @click="getUserSong()"
         />
       </div>
+      <ProgressSpinner
+        v-if="isLoading"
+        stroke-width="6" 
+        class="mt-40 w-24 text-primary-400"
+      />
       <div
         v-if="tracks.length !== 0"
         class="bg-surface-900 flex flex-wrap gap-4 mx-auto justify-center px-36 py-20"
@@ -50,6 +55,7 @@
   const tracks = ref<SpotifyAPITrack[]>([]);
   const trackName = ref('');
   const searchResponse = ref();
+  const isLoading = ref(false);
   
   onMounted(async () => {
     if (new Date(spotifyAPIStore.expiresAt) < new Date()){
@@ -62,7 +68,10 @@
   })
   
   const getUserSong = async () => {
+    tracks.value = [];
+    isLoading.value = true;
     searchResponse.value = await getSong(spotifyAPIStore.accessToken, trackName.value);
+    isLoading.value = false;
     tracks.value = searchResponse.value.tracks.items
   }
   
