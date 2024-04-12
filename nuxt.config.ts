@@ -7,7 +7,8 @@ export default defineNuxtConfig({
       CLIENT_SECRET: process.env.CLIENT_SECRET,
       REDIRECT_URI: process.env.REDIRECT_URI
     }
-  }, 
+  },
+  ssr: false,
   modules: [
       'nuxt-primevue',
       '@nuxtjs/tailwindcss',
