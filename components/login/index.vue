@@ -1,6 +1,6 @@
 <template>
   <div class="bg-surface-900 h-screen w-screen flex flex-col justify-center items-center">
-    <Card class="w-96 shadow-custom p-5 bg-surface-900">
+    <Card class="w-96 shadow-custom p-5 bg-surface-800">
       <template #title>
         <div class="text-center text-3xl text-primary-50">
           Login
@@ -14,7 +14,7 @@
           >Username</label>
           <InputText
             id="username"
-            v-model="username"
+            v-model="formData['username']"
             aria-describedby="username-help"
           />
         </div>
@@ -25,15 +25,14 @@
           >Password</label>
           <Password
             id="password"
-            v-model="password"
+            v-model="formData['password']"
             toggle-mask
             :feedback="false"
           />
           <small>
-            <a
-              href="#"
-              class="text-primary-200"
-            >Forgot your password?</a>
+            <NuxtLink to="/register">
+              <p class="text-primary-500">Doesn't have an account? Register!</p>
+            </NuxtLink>
           </small>
         </div>
       </template>
@@ -52,20 +51,30 @@
 
 <script setup lang="ts">
 
-import { ref } from 'vue';
+const formData = ref({
+  id: '',
+  username: '',
+  password: ''
+});
+const userStore = useUserStore();
+const toast = useToast();
 
-const username = ref('');
-const password = ref('');
-const session = ref({});
-const { setLocalStorageItem: setItem } = setLocalStorageItem();
+const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
+    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
+};
 
 const login = () => {
-  session.value = {
-    username: username.value,
-    password: password.value
+  if (userStore.login(formData.value)) {
+    navigateTo("/profile");
+    show("success", "Login Success", "The user was logged sucsessully.")
+  } else {
+    show("error", "Login Fail", "The credentials are invalid.")
   }
-  setItem("session", JSON.stringify(session.value));
-  navigateTo("/profile");
+  formData.value = {
+      id: '',
+      username: '',
+      password: ''
+  }
 }
 
 </script>

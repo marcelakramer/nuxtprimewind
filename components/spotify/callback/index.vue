@@ -28,7 +28,7 @@
         spotifyAPIStore.setExpiresAt(getExpiresAt(accessTokenResponse.value.expires_in));
       }
     }
-    //navigateTo('/spotify/search');
+    navigateTo('/spotify/search');
   });
   
   </script>

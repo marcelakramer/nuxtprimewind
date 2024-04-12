@@ -1,17 +1,9 @@
 export default defineNuxtRouteMiddleware((to) => {
-    const router = useRouter();
-    if (to.path === "/login" && isLoggedIn()) {
-        // return navigateTo("/profile");
-        router.push('/profile')
-    } else if ((to.path === "/profile" || to.path === "/favorites") && !isLoggedIn()) {
-        // return navigateTo("/login")
-        router.push('/login')
+    const userStore = useUserStore();
+    if ((to.path === "/login" || to.path === "/register") && userStore.logged) {
+        return navigateTo("/profile");
+    } else if ((to.path === "/profile" || to.path === "/favorites") && !userStore.logged) {
+        return navigateTo("/login")
     }
 })
-
-const { getLocalStorageItem: getItem } = getLocalStorageItem();
-
-const isLoggedIn = () => {
-    return getItem("session");
-}
 

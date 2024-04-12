@@ -6,7 +6,7 @@
       alt="song-image"
     >
     <h1 class="text-primary-50 font-bold text-6xl mt-10">
-      Welcome to the SongHub!
+      Welcome to SongHub!
     </h1>
     <p class="text-primary-300 text-center m-10 text-2xl max-w-xl">
       Explore a world of music and manage your favorite tunes effortlessly.

@@ -1,5 +1,5 @@
 <template>
   <div>
-    <Profile />
+    <Register />
   </div>
 </template>

@@ -11,6 +11,7 @@
           placeholder="Type a song name..."
           autocomplete="off"
           class="mx-5"
+          @keyup.enter="getUserSong()"
         />
         <Button 
           label="Search"
