@@ -95,17 +95,14 @@ const favoriteStore = useFavoriteStore();
 const songStore = useSongStore();
 const toast = useToast();
 
-const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
-    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
-};
 
 const favorite = (song: Song) => {
   if (isFavorite(song)) {
     favoriteStore.removeFavorite(song);
-    show(undefined, "Deslike Song", "Song removed from favorites.");
+    toast.add({severity: undefined, summary: "Deslike Song", detail: "Song removed from favorites.", life: 3000});
   } else {
     favoriteStore.addFavorite(song);
-    show(undefined, "Like Song", "Song added to favorites.");
+    toast.add({severity: undefined, summary: "Like Song", detail: "Song added to favorites.", life: 3000});
   }
   
 };
@@ -117,14 +114,14 @@ const isFavorite = (song: Song) => {
 const deleteSong = (song: Song) => {
     favoriteStore.removeFavorite(song);
     songStore.deleteSong(song);
-    show("error", "Delete song", "Song was deleted from the list.")
+    toast.add({severity: "error", summary: "Delete song", detail: "Song was deleted from the list.", life: 3000})
 }
 
 const addSong = (song: Song) => {
   if (songStore.addSong(song)) {
-    show("success", "Add song", "Song was added to the list.")  
+    toast.add({severity: "success", summary: "Add song", detail: "Song was added to the list.", life: 3000})  
   } else {
-    show("error", "Existing song", "Song is already on the list.")
+    toast.add({severity: "error", summary: "Existing song", detail: "Song is already on the list.", life: 3000})
   }
 }
 

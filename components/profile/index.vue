@@ -5,11 +5,8 @@
         <div class="flex justify-center items-center flex-col">
           <img
             class="w-64 rounded-full"
-            src="../../assets/images/sabrina.jpg"
+            src="../../assets/images/user.svg"
           >
-          <!-- <p class="text-xs text-primary-500 mt-1">
-            Change photo
-          </p> -->
         </div>
       </template>
       <template #content>
@@ -37,14 +34,66 @@
           />
         </div>
       </template>
-      <template #footer />
+      <template #footer>
+        <div class="flex justify-around">
+          <Button
+            class="w-20"
+            label="Save"
+            :disabled="!hasInfoChanged"
+            @click="save"
+          />
+          <Button
+            class="w-20"
+            label="Logout"
+            outlined
+            @click="logout"
+          />
+          <Button
+            class="w-20"
+            label="Delete"
+            severity="danger"
+            @click="deleteUser"
+          />
+        </div>
+      </template>
     </Card>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { User } from '~/interfaces/user';
 
 const userStore = useUserStore();
-const formData = ref(userStore.logged)
+const user = ref(userStore.users.find((u) => u.username === userStore.logged.username));
+const formData = ref<User>({...userStore.logged});
+  const toast = useToast();
+
+
+const hasInfoChanged = computed(() => {
+  return formData.value.username !== userStore.logged.username || formData.value.password !== userStore.logged.password
+})
+
+const save = () => {
+  if (user.value !== undefined) {
+    user.value.username = formData.value.username;
+    user.value.password = formData.value.password;
+    userStore.logged = user.value;
+    toast.add({severity: "success", summary: "Info Update", detail: "The user information was updated.", life: 3000})
+  }
+}
+
+const logout = () => {
+  userStore.logout();
+  navigateTo('/login');
+  toast.add({severity: "error", summary: "Logout", detail: "The user was logged out.", life: 3000})
+}
+
+const deleteUser = () => {
+  if (user.value !== undefined) {
+    userStore.deleteUser(user.value);
+    logout();
+    toast.add({severity: "error", summary: "Delete Account", detail: "The account was deleted successfully.", life: 3000})
+  }
+}
 
 </script>

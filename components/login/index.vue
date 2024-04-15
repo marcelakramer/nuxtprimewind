@@ -59,16 +59,12 @@ const formData = ref({
 const userStore = useUserStore();
 const toast = useToast();
 
-const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
-    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
-};
-
 const login = () => {
   if (userStore.login(formData.value)) {
     navigateTo("/profile");
-    show("success", "Login Success", "The user was logged sucsessully.")
+    toast.add({severity: "success", summary: "Login Success", detail: "The user was logged in.", life: 3000})
   } else {
-    show("error", "Login Fail", "The credentials are invalid.")
+    toast.add({severity: "error", summary: "Login Fail", detail: "The credentials are invalid.", life: 3000})
   }
   formData.value = {
       id: '',

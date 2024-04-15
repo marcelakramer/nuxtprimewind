@@ -34,6 +34,12 @@ export const useUserStore = defineStore("users", {
                     return true
             }
             return false 
+        },
+        logout() {
+            this.logged = {id: '', username: '', password: ''}
+        },
+        isLogged() : boolean {
+            return this.logged.username !== '' && this.logged.password !== ''
         }
     },
     persist: {

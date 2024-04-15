@@ -1,4 +1,4 @@
-export interface SpotifyAPITrack {
+export interface Track {
     name: string;
     artists: { name: string }[];
     album: {

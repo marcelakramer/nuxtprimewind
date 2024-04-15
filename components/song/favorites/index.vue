@@ -67,13 +67,9 @@ import type { Song } from '~/interfaces/song';
 const favoriteStore = useFavoriteStore();
 const toast = useToast();
 
-const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
-    toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
-};
-
 const removeFavorite = (song: Song) => {
   favoriteStore.removeFavorite(song);
-  show(undefined, "Deslike Song", "Song removed from favorites.");
+  toast.add({severity: undefined, summary: "Deslike Song", detail: "Song removed from favorites.", life: 3000});
 }
 
 </script>

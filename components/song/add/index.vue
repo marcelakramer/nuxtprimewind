@@ -70,19 +70,15 @@ const showDialog = () => {
   dialogVisible.value = true;
 };
 
-const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
-  toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
-};
-
 const saveSong = () => {
   if (!validateForm()) {
-    show("error", "Form error", "There is some error in the form fields.")
+    toast.add({severity: "error", summary: "Form error", detail: "There is some error in the form fields.", life: 3000})
     return
   }
   if (!songStore.addSong(formData.value)) {
-    show("error", "Existing song", "Song is already on the list.")
+    toast.add({severity: "error", summary: "Existing song", detail: "Song is already on the list.", life: 3000})
   } else {
-    show("success", "Add song", "Song was added to the list.");
+    toast.add({severity: "success", summary: "Add song", detail: "Song was added to the list.", life: 3000});
   }
   resetForm();
   dialogVisible.value = false;

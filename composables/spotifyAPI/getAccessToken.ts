@@ -1,9 +1,4 @@
-// interface
-interface AccessTokenResponse {
-    access_token: string;
-    refresh_token: string;
-    expires_in: number;
-}
+import type { AccessTokenResponse } from "~/interfaces/spotifyAPI/accessTokenResponse";
 
 export const getAccessToken = async (code: string) => {
     const config = useRuntimeConfig();

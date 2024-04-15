@@ -61,16 +61,12 @@
   const userStore = useUserStore();
   const toast = useToast();
   
-  const show = (severity: "secondary" | "success" | "info" | "contrast" | "warn" | "error" | undefined, summary: string, detail: string) => {
-      toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
-  };
-  
   const register = () => {
     if (userStore.register(formData.value)) {
       navigateTo("/login");
-      show("success", "Register Success", "The user was registered sucsessully.")
+      toast.add({severity: "success", summary: "Register Success", detail: "The user was registered sucsessully.", life: 3000})
     } else {
-      show("error", "Register Fail", "This username already exists.")
+      toast.add({severity: "error", summary: "Register Fail", detail: "This username already exists.", life: 3000})
     }
     formData.value = {
         id: '',

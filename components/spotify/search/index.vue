@@ -49,11 +49,11 @@
 </template>
   
   <script setup lang="ts">
-  import type { SpotifyAPITrack } from '~/interfaces/spotifyAPITrack';
+  import type { Track } from '~/interfaces/spotifyAPI/track';
   
   const spotifyAPIStore = useSpotifyAPIStore();
   const refreshTokenResponse = ref();
-  const tracks = ref<SpotifyAPITrack[]>([]);
+  const tracks = ref<Track[]>([]);
   const trackName = ref('');
   const searchResponse = ref();
   const isLoading = ref(false);
