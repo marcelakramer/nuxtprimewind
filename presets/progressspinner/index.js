@@ -32,7 +32,7 @@ export default {
             'h-full',
 
             // Transformations
-            'transform',
+            'transform-none',
             'origin-center',
 
             // Animations
@@ -42,10 +42,13 @@ export default {
     circle: {
         class: [
             // Colors
-            'text-red-500',
+            'stroke-current',
 
             // Misc
-            'progress-spinner-circle'
-        ]
+            'progress-spinner-circle',
+        ],
+        style: {
+            animation: 'p-progress-spinner-dash 1.5s ease-in-out infinite'
+        }
     }
 };

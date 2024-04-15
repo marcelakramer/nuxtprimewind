@@ -1,9 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      CLIENT_ID: process.env.CLIENT_ID,
+      CLIENT_SECRET: process.env.CLIENT_SECRET,
+      REDIRECT_URI: process.env.REDIRECT_URI
+    }
+  },
+  ssr: false,
   modules: [
       'nuxt-primevue',
-      '@nuxtjs/tailwindcss'
+      '@nuxtjs/tailwindcss',
+      '@pinia/nuxt',
+      '@pinia-plugin-persistedstate/nuxt'
   ],
   css: [
     '@/assets/css/base.css',
@@ -14,7 +24,12 @@ export default defineNuxtConfig({
     layouts: "layouts",
     middleware: "middleware",
     pages: "pages",
-    static: "static"
+    static: "static",
+  },
+  imports: {
+    dirs: [
+      "composables/**"
+    ]
   },
   primevue: {
     options: {
@@ -60,5 +75,8 @@ export default defineNuxtConfig({
           }
       }
     }
+  },
+  pinia: {
+    storesDirs: ['./stores/**']
   }
 })
