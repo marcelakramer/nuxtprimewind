@@ -39,7 +39,7 @@ export const useUserStore = defineStore("users", {
             this.logged = {id: '', username: '', password: ''}
         },
         isLogged() : boolean {
-            return this.logged.username !== '' && this.logged.password !== ''
+            return this.logged.username !== undefined && this.logged.password !== undefined && this.logged.username !== '' && this.logged.password !== ''
         }
     },
     persist: {

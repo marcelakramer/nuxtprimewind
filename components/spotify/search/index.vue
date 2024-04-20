@@ -75,6 +75,8 @@
         if (refreshTokenResponse.value !== undefined) {
           spotifyAPIStore.setAccessToken(refreshTokenResponse.value.access_token);
           spotifyAPIStore.setExpiresAt(getExpiresAt(refreshTokenResponse.value.expires_in));
+        } else {
+          spotifyAPIStore.auth = false;
         }
       }
   })
