@@ -1,10 +1,17 @@
 <template>
   <div class="h-screen">
-    <div class="pt-16 flex flex-col justify-center items-center gap-4">
-      <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
-        Search a song in Spotify
-      </h1>
-      <div class="pt-16">
+    <div class="pt-32 flex flex-col justify-center items-center gap-4">
+      <div class="flex items-center justify-center">
+        <h1 class="text-primary-50 font-bold text-center text-5xl">
+          Search in
+        </h1>
+        <img
+          class="w-64 ml-4"
+          src="../../../assets/images/spotify/Spotify_Logo_RGB_White.png"
+          alt="Spotify Logo"
+        >
+      </div>
+      <div class="pt-8">
         <InputText
           id="trackName"
           v-model="trackName"
@@ -38,7 +45,11 @@
               album: track.album.name,
               duration: formatSecondsToTime(track.duration_ms),
               year: track.album.release_date.slice(0, 4),
-              image: track.album.images[0].url
+              image: track.album.images[0].url,
+              fromSpotify: true,
+              songSpotifyUrl: track.external_urls.spotify,
+              artistSpotifyUrl: track.artists[0].external_urls.spotify,
+              albumSpotifyUrl: track.album.external_urls.spotify,
             }"
             :is-new="true"
           />
@@ -73,7 +84,7 @@
     isLoading.value = true;
     searchResponse.value = await getSong(spotifyAPIStore.accessToken, trackName.value);
     isLoading.value = false;
-    tracks.value = searchResponse.value.tracks.items
+    tracks.value = searchResponse.value.tracks.items;
   }
   
   </script>

@@ -5,5 +5,9 @@ export interface Song {
     album: string,
     duration: string,
     year: string,
-    image: string
+    image: string,
+    fromSpotify: boolean,
+    songSpotifyUrl: string,
+    artistSpotifyUrl: string,
+    albumSpotifyUrl: string,
 }
