@@ -32,10 +32,10 @@
             />
           </NuxtLink>
           <NuxtLink to="/spotify/search">
-            <Button
-              label="Spotify API"
-              text
-            />
+            <img
+              class="w-20"
+              src="../assets/images/spotify/Spotify_Logo_RGB_White.png"
+            >
           </NuxtLink>
         </div>
       </template>

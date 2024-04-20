@@ -55,7 +55,11 @@ const formData = ref({
   album: '',
   duration: '',
   year: '',
-  image: ''
+  image: '',
+  fromSpotify: false,
+  songSpotifyUrl: '',
+  artistSpotifyUrl: '',
+  albumSpotifyUrl: '',
 });
 
 const fields = {
@@ -107,7 +111,11 @@ const resetForm = () => {
     album: '',
     duration: '',
     year: '',
-    image: ''
+    image: '',
+    fromSpotify: false,
+    songSpotifyUrl: '',
+    artistSpotifyUrl: '',
+    albumSpotifyUrl: '',
   };
 };
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="pt-16 h-screen">
-    <h1 class="text-primary-50 font-bold text-center text-5xl pt-10">
+  <div class="pt-32 h-screen">
+    <h1 class="text-primary-50 font-bold text-center text-5xl">
       Song List
     </h1>
     <SongAdd />
