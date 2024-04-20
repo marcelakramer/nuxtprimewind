@@ -26,6 +26,7 @@
         spotifyAPIStore.setAccessToken(accessTokenResponse.value.access_token);
         spotifyAPIStore.setRefreshToken(accessTokenResponse.value.refresh_token);
         spotifyAPIStore.setExpiresAt(getExpiresAt(accessTokenResponse.value.expires_in));
+        spotifyAPIStore.auth = true;
       }
     }
     navigateTo('/spotify/search');
